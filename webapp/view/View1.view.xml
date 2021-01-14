@@ -1,0 +1,49 @@
+<mvc:View controllerName="com.ducky.tabler.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page">
+					<content>
+						<Table id="idProductsTable"
+							inset="false"
+							items="{
+								path: '/Products'
+							}">
+							<headerToolbar>
+								<OverflowToolbar>
+									<content>
+										<Title text="Products" level="H2"/>
+									</content>
+								</OverflowToolbar>
+							</headerToolbar>
+							<columns>
+								<Column
+									width="12em">
+									<Text text="Name" />
+								</Column>
+								<Column
+									width="12em">
+									<Text text="Age" />
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text
+											text="{name}" />
+										<Text
+											text="{age}" />
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						
+						
+						
+						
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
