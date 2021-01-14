@@ -9,7 +9,8 @@
 		{
 			"name": "potato",
 			"age": "14 days",
-			"width" : "24 inches"
+			"width" : "24 inches",
+			"purpose": "apocalypse"
 		},
 		{
 			"name": "rick and morty",
