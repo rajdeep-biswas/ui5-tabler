@@ -2,46 +2,8 @@
 	<Shell id="shell">
 		<App id="app">
 			<pages>
-				<Page id="page">
-					<content>
-						<Table id="idProductsTable"
-							inset="false"
-							items="{
-								path: '/Products'
-							}">
-							<headerToolbar>
-								<OverflowToolbar>
-									<content>
-										<Title text="Products" level="H2"/>
-									</content>
-								</OverflowToolbar>
-							</headerToolbar>
-							<columns>
-								<Column
-									width="12em">
-									<Text text="Name" />
-								</Column>
-								<Column
-									width="12em">
-									<Text text="Age" />
-								</Column>
-							</columns>
-							<items>
-								<ColumnListItem>
-									<cells>
-										<Text
-											text="{name}" />
-										<Text
-											text="{age}" />
-									</cells>
-								</ColumnListItem>
-							</items>
-						</Table>
-						
-						
-						
-						
-					</content>
+				<Page id="page" title="{i18n>title}">
+					<content></content>
 				</Page>
 			</pages>
 		</App>

@@ -6,55 +6,39 @@ sap.ui.define([
 
 	return Controller.extend("com.ducky.tabler.controller.View1", {
 		 onInit: async function () {
-   //         var data = {
-   //             "source":"view1.controller.json"
-   //         };
-			// var oModel = new sap.ui.model.json.JSONModel();
-   //         oModel.setData(data);
-   //         this.getView().setModel(oModel,"basicModel");
-           
-   //         oModel = new sap.ui.model.json.JSONModel();
-   //         await oModel.loadData("model/data.json");
-   //         this.getView().setModel(oModel,"fileModel");
-           
-   //         // console.log("Data From controller - "+ JSON.stringify(this.getView().getModel("basicModel").getData()));
-   //         // console.log("Data From file - "+ JSON.stringify(this.getView().getModel("fileModel").getData()));
-           
-			// var oTable = new sap.m.Table("table1");
-			
-			// for(var key_name in oModel.getData()["things"][0]) {
-			// 	var newCol = new sap.m.Column("col" + key_name, {
-			// 		header : new sap.m.Label({
-		 //               text : key_name
-		 //           })
-			// 	});
-			// 	oTable.addColumn(newCol);
-			// }
-			
-			// var oCell = [];
-
-   //         for(var k in oModel.getData()["things"]) {
-			// 	for(var key_name in oModel.getData()["things"][k]) {
-			// 		var cell1 = new sap.m.Text({
-   //                 	text: oModel.getData()["things"][k][key_name]
-   //                 });
-   //                 oCell.push(cell1);
-			// 		console.log(key_name, oModel.getData()["things"][k][key_name]);
-			// 	}
-			// }
-			
-			// var aColList = new sap.m.ColumnListItem("aColList", {
-			// 	cells: oCell
-			// });
-			
-			// oTable.bindItems("/fileModel", aColList);
-
-   // 		this.getView().byId("page").addContent(oTable);
-   
-   
-			var oModel = new sap.ui.model.json.JSONModel();
+            var oModel = new sap.ui.model.json.JSONModel();
             await oModel.loadData("model/data.json");
             this.getView().setModel(oModel);
+       
+        	var json_keys = Object.keys(oModel.getData()["things"][0]);
+        	
+			var oTable = new sap.m.Table("table1", {
+				headerToolbar : new sap.m.Toolbar({
+		            content : [ new sap.m.Label({
+		                text : "Products"
+		            })]
+		        })
+			});
+			
+			var allCells = [];
+			
+			for(var key in json_keys) {
+				var newCol = new sap.m.Column("col" + key, {
+					header : new sap.m.Label({
+		                text : json_keys[key]
+		            })
+				});
+				oTable.addColumn(newCol);
+				allCells.push(new sap.m.Text({ text : '{' + json_keys[key] +  '}' }));
+			}
+
+			var aColList = new sap.m.ColumnListItem("aColList", {
+				cells: allCells
+			});
+			
+			oTable.bindItems("/things", aColList);
+		    oTable.setModel(oModel);
+    		this.getView().byId("page").addContent(oTable);
         }
 	});
 });
